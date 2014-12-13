@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>We Need A...</title>
+  <script src='/javascripts/lib/jquery-1.11.1.min.js'></script>
+  <script src='/javascripts/lib/underscore-min.js'></script>
+  <script src='/javascripts/lib/backbone-min.js'></script>
+
+  <script type="text/template" id="player-template">
+  
+    <div class="players">
+      <%% _.each(collection, function(player, index)%>
+        <div class="player">
+          <div class="player-name"><%%=player.lastName + ", "+ player.firstName%></div>
+        </div>
+      <%%});%>
+    </div>
+
+  </script>
+
+</head>
+<body>
+
+  <%= yield %>
+
+  <script src='/javascripts/models/player.js'></script>
+  <script src='/javascripts/collections/player-collection.js'></script>
+  <script src='/javascripts/views/player-view.js'></script>
+  <script src='/javascripts/views/player-collection-view.js'></script>
+  <script src='/javascripts/routers/router.js'></script>
+  <script src='/javascripts/main.js'></script>
+</body>
+</html>
