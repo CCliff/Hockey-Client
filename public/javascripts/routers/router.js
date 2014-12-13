@@ -1,6 +1,7 @@
 var Router = Backbone.Router.extend({
   initialize: function(options){
     this.collection = options.collection;
+    this.model = options.model;
     this.$el = options.$el;
   },
   routes:{
@@ -26,4 +27,15 @@ var Router = Backbone.Router.extend({
       }
     });    
   },
+  showPlayer: function(playerID){
+    var that = this;
+    this.model.fetch({
+      data: {id: playerID},
+      success: function(player){
+        var view = new PlayerView({model: player});
+        that.setView(view);
+        setGraph(player.toJSON());
+      }
+    });
+  }
 });

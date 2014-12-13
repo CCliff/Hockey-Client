@@ -1,0 +1,55 @@
+<div class="player-name"><%=player.lastName%>, <%=player.firstName%></div>
+<div class="player-position"><%=player.pos%></div>
+
+<svg id="stats-graph" width="900" height="500"></svg>
+
+<table class="seasons">
+
+  <tr id="season-header">
+    <td>League</td>
+    <td>Year</td>
+    <td>Team</td>
+    <td>Pos</td>
+    <td>GP</td>
+    <td>G</td>
+    <td>A</td>
+    <td>PPA</td>
+    <td>PPG</td>
+    <td>Pts</td>
+    <td>+/-</td>
+    <td>SOG</td>
+    <td>GWG</td>
+    <td>GTG</td>
+    <td>PIM</td>
+  </tr>
+
+  <%_.each(seasons, function(season, id){%>
+
+    <tr id="season-<%=season.year%>">
+      <td><%=season.lgID%></td>
+      <td><%=season.year%></td>
+      <td><%=season.tmID%></td>
+      <td><%=season.pos%></td>
+      <td><%=season.GP%></td>
+      <td><%=season.G%></td>
+      <td><%=season.A%></td>
+      <td><%=season.PPA%></td>
+      <td><%=season.PPG%></td>
+      <td><%=season.Pts%></td>
+      <td><%=season.PlusMinus%></td>
+      <td><%=season.SOG%></td>
+      <td><%=season.GWG%></td>
+      <td><%=season.GTG%></td>
+      <td><%=season.PIM%></td>
+
+    </tr>
+
+  <%});%>
+</table>
+
+<script>
+  $(document).on('click', '#season-header td', function(){
+    var stat = $(this).text();
+    $('.line-' + stat).toggle();
+  });
+</script>
