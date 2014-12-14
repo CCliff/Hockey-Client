@@ -7,18 +7,9 @@
   <script src='/javascripts/lib/underscore-min.js'></script>
   <script src='/javascripts/lib/backbone-min.js'></script>
   <script src='/javascripts/lib/d3-min.js'></script>
+  <link rel="stylesheet" href="/stylesheets/styles.css">  
+  <link rel="stylesheet" href="/stylesheets/normalize.css">
 
-  <script type="text/template" id="player-template">
-  
-    <div class="players">
-      <%% _.each(collection, function(player, index)%>
-        <div class="player">
-          <div class="player-name"><%%=player.lastName + ", "+ player.firstName%></div>
-        </div>
-      <%%});%>
-    </div>
-
-  </script>
 
 </head>
 <body>

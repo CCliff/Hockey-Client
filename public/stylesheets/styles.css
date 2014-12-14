@@ -1,0 +1,80 @@
+body {
+  color: #666;
+  background-image: url(/images/OlHockey.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.content {
+  background-color: white;
+  max-width: 800px;
+  margin: auto;
+  box-shadow: 0px 0px 41px black;
+}
+
+.player-display {
+  background: rgb(245, 238, 232);
+  background: #c1beb4; /* Old browsers */
+  background: -moz-linear-gradient(left, #c1beb4 2%, #f5eee8 66%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(2%,#c1beb4), color-stop(66%,#f5eee8)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, #c1beb4 2%,#f5eee8 66%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, #c1beb4 2%,#f5eee8 66%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #c1beb4 2%,#f5eee8 66%); /* IE10+ */
+  background: linear-gradient(to right, #c1beb4 2%,#f5eee8 66%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c1beb4', endColorstr='#f5eee8',GradientType=1 ); /* IE6-9 */
+  border-bottom: 5px solid rgb(100, 90, 88);
+  border-top: 5px solid rgb(100, 90, 88);
+}
+
+.player-display h1 {
+  padding: 20px;
+  margin: 0;
+}
+
+span.position {
+  color: #555;
+  background: rgb(210, 200, 190);
+  border: 4px solid rgb(100, 90, 88);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  display: inline-block;
+}
+
+path {
+  opacity: 0.5;
+  stroke-linecap: round;
+}
+
+path:hover {
+  opacity: 1;
+  stroke-width: 5px;
+}
+
+table.seasons {
+    width: 750px;
+    margin: auto;
+    box-shadow: 1px 1px 2px black;
+}
+
+.cells-highlighted{
+  background-color: yellow;
+}
+
+#season-header td {
+    border-bottom: 2px solid black;
+}
+
+
+
+tbody tr:nth-child(odd) {
+   background-color: #F5FAFA;
+}
+
+td{
+  padding: 4px;
+  border-right: 1px solid #C1DAD7;
+  border-bottom: 1px solid #C1DAD7;
+}

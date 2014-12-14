@@ -34,8 +34,12 @@ function setGraph(player){
     xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(player.seasons, function(season){
         return season.year;}), d3.max(player.seasons, function(season){
         return season.year;})]),
-    yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0, d3.max(player.seasons, function(season) {
-      return season.Pts;
+    yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([d3.min(player.seasons, function(season) {
+      var min = Math.min(season.PlusMinus, 0);
+      return min;
+    }), d3.max(player.seasons, function(season) {
+      var max = Math.max(season.Pts, season.PIM, season.SOG);
+      return max;
     })]),
     xAxis = d3.svg.axis()
       .scale(xRange)
@@ -59,40 +63,37 @@ function setGraph(player){
       .attr('transform', 'translate(' + (MARGINS.left) + ',0)')
       .call(yAxis);
 
-    var ptsFunc = d3.svg.line()
-      .x(function(d) {
-        return xRange(d.year);
-      })
-      .y(function(d) {
-        return yRange(d.Pts);
-      })
-      .interpolate('monotone');
+    function createLine(data, stat, color){
+      STAT = stat;
+      var lineFunc = d3.svg.line()
+        .x(function(d) {
+          return xRange(d.year);
+        })
+        .y(function(d) {
+          return yRange(d[STAT]);
+        })
+        .interpolate('monotone');
 
-    vis.append('svg:path')
-      .attr('d', ptsFunc(player.seasons))
-      .attr('class', 'line-Pts')
-      .attr('stroke', 'blue')
-      .attr('stroke-width', 2)
-      .attr('fill', 'none');
+      vis.append('svg:path')
+        .attr('d', lineFunc(data))
+        .attr('class', stat)
+        .attr('stroke', color)
+        .attr('stroke-width', 4)
+        .attr('fill', 'none');
+    }
 
-    var GFunc = d3.svg.line()
-      .x(function(d) {
-        return xRange(d.year);
-      })
-      .y(function(d) {
-        return yRange(d.G);
-      })
-      .interpolate('monotone');
-
-    vis.append('svg:path')
-      .attr('d', GFunc(player.seasons))
-      .attr('class', 'line-G')
-      .attr('stroke', 'green')
-      .attr('stroke-width', 3)
-      .attr('fill', 'none');
-
-    $('.line-goal').append('svg:title')
-        .text('Goals');
+    createLine(player.seasons, 'Pts', 'black');
+    createLine(player.seasons, 'G', '#1A1F2B');
+    createLine(player.seasons, 'GP', '#931111');
+    createLine(player.seasons, 'A', '#600000');
+    createLine(player.seasons, 'PPA', '#790000');
+    createLine(player.seasons, 'PPG', '#30395C');
+    createLine(player.seasons, 'PlusMinus', '#AAA48E');
+    createLine(player.seasons, 'SOG', '#2565C7');
+    createLine(player.seasons, 'GWG', '#4A6491');
+    createLine(player.seasons, 'GTG', '#85A5CC');
+    createLine(player.seasons, 'PIM', '#D8D2BA');
+    
 }
 
 $(function(){

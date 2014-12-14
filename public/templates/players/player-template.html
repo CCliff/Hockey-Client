@@ -1,55 +1,81 @@
-<div class="player-name"><%=player.lastName%>, <%=player.firstName%></div>
-<div class="player-position"><%=player.pos%></div>
+<div class="player-display">
+    <h1><%=player.lastName%>, <%=player.firstName%> <span class='position'><%=player.pos%></span></h1>
+    
+</div>
 
-<svg id="stats-graph" width="900" height="500"></svg>
+<svg id="stats-graph" width="800" height="500"></svg>
 
-<table class="seasons">
-
-  <tr id="season-header">
-    <td>League</td>
-    <td>Year</td>
-    <td>Team</td>
-    <td>Pos</td>
-    <td>GP</td>
-    <td>G</td>
-    <td>A</td>
-    <td>PPA</td>
-    <td>PPG</td>
-    <td>Pts</td>
-    <td>+/-</td>
-    <td>SOG</td>
-    <td>GWG</td>
-    <td>GTG</td>
-    <td>PIM</td>
-  </tr>
-
+<table class="seasons" cellspacing="0">
+  <thead>
+    <tr id="season-header">
+      <td class="stat-lg">League</td>
+      <td class="stat-year">Year</td>
+      <td class="stat-team">Team</td>
+      <td class="stat-pos">Pos</td>
+      <td class="stat-GP">GP</td>
+      <td class="stat-G">G</td>
+      <td class="stat-A">A</td>
+      <td class="stat-PPA">PPA</td>
+      <td class="stat-PPG">PPG</td>
+      <td class="stat-Pts">Pts</td>
+      <td class="stat-PlusMinus">+/-</td>
+      <td class="stat-SOG">SOG</td>
+      <td class="stat-GWG">GWG</td>
+      <td class="stat-GTG">GTG</td>
+      <td class="stat-PIM">PIM</td>
+    </tr>
+  </thead>
+  <tbody>
   <%_.each(seasons, function(season, id){%>
 
     <tr id="season-<%=season.year%>">
-      <td><%=season.lgID%></td>
-      <td><%=season.year%></td>
-      <td><%=season.tmID%></td>
-      <td><%=season.pos%></td>
-      <td><%=season.GP%></td>
-      <td><%=season.G%></td>
-      <td><%=season.A%></td>
-      <td><%=season.PPA%></td>
-      <td><%=season.PPG%></td>
-      <td><%=season.Pts%></td>
-      <td><%=season.PlusMinus%></td>
-      <td><%=season.SOG%></td>
-      <td><%=season.GWG%></td>
-      <td><%=season.GTG%></td>
-      <td><%=season.PIM%></td>
+      <td class="stat-lg"><%=season.lgID%></td>
+      <td class="stat-year"><%=season.year%></td>
+      <td class="stat-team"><%=season.tmID%></td>
+      <td class="stat-pos"><%=season.pos%></td>
+      <td class="stat-GP"><%=season.GP%></td>
+      <td class="stat-G"><%=season.G%></td>
+      <td class="stat-A"><%=season.A%></td>
+      <td class="stat-PPA"><%=season.PPA%></td>
+      <td class="stat-PPG"><%=season.PPG%></td>
+      <td class="stat-Pts"><%=season.Pts%></td>
+      <td class="stat-PlusMinus"><%=season.PlusMinus%></td>
+      <td class="stat-SOG"><%=season.SOG%></td>
+      <td class="stat-GWG"><%=season.GWG%></td>
+      <td class="stat-GTG"><%=season.GTG%></td>
+      <td class="stat-PIM"><%=season.PIM%></td>
 
     </tr>
 
   <%});%>
+  </tbody>
 </table>
 
 <script>
   $(document).on('click', '#season-header td', function(){
     var stat = $(this).text();
-    $('.line-' + stat).toggle();
+    if (stat === '+/-'){
+      stat = 'PlusMinus';
+    }
+    $('.' + stat).toggle();
   });
+  $(document).on('mouseenter mouseleave', 'path', function(){
+    var stat = $(this).attr('class');
+    $('.stat-' + stat).toggleClass("cells-highlighted");
+  });
+
+  setTimeout(function(){
+    $paths = $('path');
+    $paths.each(function(index, path){
+      var length = path.getTotalLength();
+      path.style.transition = path.style.WebkitTransition =
+'none';
+      $(path).attr('stroke-dasharray', length + " " + length);
+      $(path).attr('stroke-dashoffset', length);
+      path.getBoundingClientRect();
+      path.style.transition = path.style.WebkitTransition =
+'stroke-dashoffset 2s ease-in-out';
+path.style.strokeDashoffset = '0';
+    });
+  }, 0);
 </script>
