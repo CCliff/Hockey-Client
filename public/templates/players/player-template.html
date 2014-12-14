@@ -12,17 +12,17 @@
       <td class="stat-year">Year</td>
       <td class="stat-team">Team</td>
       <td class="stat-pos">Pos</td>
-      <td class="stat-GP">GP</td>
-      <td class="stat-G">G</td>
-      <td class="stat-A">A</td>
-      <td class="stat-PPA">PPA</td>
-      <td class="stat-PPG">PPG</td>
-      <td class="stat-Pts">Pts</td>
-      <td class="stat-PlusMinus">+/-</td>
-      <td class="stat-SOG">SOG</td>
-      <td class="stat-GWG">GWG</td>
-      <td class="stat-GTG">GTG</td>
-      <td class="stat-PIM">PIM</td>
+      <td class="stat-GP">GP<span></span></td>
+      <td class="stat-G">G<span></span></td>
+      <td class="stat-A">A<span></span></td>
+      <td class="stat-PPA">PPA<span></span></td>
+      <td class="stat-PPG">PPG<span></span></td>
+      <td class="stat-Pts">Pts<span></span></td>
+      <td class="stat-PlusMinus">+/-<span></span></td>
+      <td class="stat-SOG">SOG<span></span></td>
+      <td class="stat-GWG">GWG<span></span></td>
+      <td class="stat-GTG">GTG<span></span></td>
+      <td class="stat-PIM">PIM<span></span></td>
     </tr>
   </thead>
   <tbody>
@@ -58,6 +58,7 @@
       stat = 'PlusMinus';
     }
     $('.' + stat).toggle();
+    renderBoxes();
   });
   $(document).on('mouseenter mouseleave', 'path', function(){
     var stat = $(this).attr('class');
@@ -77,5 +78,23 @@
 'stroke-dashoffset 2s ease-in-out';
 path.style.strokeDashoffset = '0';
     });
+    renderBoxes();
   }, 0);
+
+function renderBoxes(){
+    $boxes = $('#season-header span');
+    $boxes.each(function(i, box){
+      stat = $(box).parent().text();
+      if (stat === '+/-'){
+        stat = 'PlusMinus';
+      }
+      $line = $('.' + stat);
+      if ($line.attr('style').indexOf('display: none') === -1) {
+        $(box).css('background', $line.attr('stroke'));
+      }else{
+        $(box).css('background', 'none');
+      }
+    });
+  }
+
 </script>

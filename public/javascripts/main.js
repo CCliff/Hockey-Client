@@ -44,14 +44,22 @@ function setGraph(player){
     xAxis = d3.svg.axis()
       .scale(xRange)
       .tickFormat(d3.format("d"))
-      .tickSize(1)
+      .tickSize(2)
       .tickSubdivide(true),
     yAxis = d3.svg.axis()
       .scale(yRange)
       .tickFormat(d3.format("d"))
       .tickSize(1)
       .orient('left')
-      .tickSubdivide(true);      
+      .tickSubdivide(true);
+    
+    // vis.append("line")
+    //   .attr("x1", MARGINS.left)
+    //   .attr("y1", HEIGHT - MARGINS.bottom)
+    //   .attr("x2", WIDTH - MARGINS.right)
+    //   .attr("y2", HEIGHT- MARGINS.bottom)
+    //   .attr("stroke-width", 2)
+    //   .attr("stroke", "black");    
 
     vis.append('svg:g')
       .attr('class', 'x axis')

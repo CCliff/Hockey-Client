@@ -65,13 +65,31 @@ table.seasons {
 
 #season-header td {
     border-bottom: 2px solid black;
+    cursor: pointer;
 }
 
+#season-header td:hover {
+    background: #ccc;
+}
+
+#season-header span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #666;
+  margin-left: 5px;
+  margin-right: 5px;
+}
 
 
 tbody tr:nth-child(odd) {
    background-color: #F5FAFA;
 }
+
+tbody tr:hover{
+  background-color: #C2D5EB;
+}
+
 
 td{
   padding: 4px;
