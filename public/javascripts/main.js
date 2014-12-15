@@ -32,14 +32,14 @@ function setGraph(player){
         left: 50
     },
     xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(player.seasons, function(season){
-        return season.year;}), d3.max(player.seasons, function(season){
-        return season.year;})]),
+        return season.year - 0.25;}), d3.max(player.seasons, function(season){
+        return season.year + 0.25;})]),
     yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([d3.min(player.seasons, function(season) {
       var min = Math.min(season.PlusMinus, 0);
-      return min;
+      return min * 1.2;
     }), d3.max(player.seasons, function(season) {
       var max = Math.max(season.Pts, season.PIM, season.SOG);
-      return max;
+      return max * 1.2;
     })]),
     xAxis = d3.svg.axis()
       .scale(xRange)
