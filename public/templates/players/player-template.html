@@ -8,6 +8,7 @@
 <table class="seasons" cellspacing="0">
   <thead>
     <tr id="season-header">
+      <td class="stat-expand"></td> 
       <td class="stat-lg">League</td>
       <td class="stat-year">Year</td>
       <td class="stat-team">Team</td>
@@ -29,6 +30,11 @@
   <%_.each(seasons, function(season, id){%>
 
     <tr id="season-<%=season.year%>">
+      <td class="stat-expand">
+        <% if (season.seasons) {%>
+          <a href="#">+</a>
+        <%};%>
+      </td>
       <td class="stat-lg"><%=season.lgID%></td>
       <td class="stat-year"><%=season.year%></td>
       <td class="stat-team"><a href="/#players?team=<%=season.tmID%>&year=<%=season.year%>"><%=season.tmID%></a></td>
