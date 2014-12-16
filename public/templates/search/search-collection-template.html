@@ -1,0 +1,21 @@
+<% if (collection[0].teams.length !== 0){ %>
+<div class="teams">
+  <h1>Teams</h1>
+  <% _.each(collection[0].teams, function(team, index){%>
+
+  <h2><a href="/#players?team=<%=team.tmID%>&year=<%=team.year%>"><%= team.name %>, <%=team.year %></a></h2>
+
+  <%});%>
+</div>
+<% } %>
+
+<% if (collection[0].players.length !== 0){ %>
+<div class="players">
+  <h1>Players</h1>
+  <% _.each(collection[0].players, function(player, index){%>
+
+  <h2><a href="/#players/<%=player.playerID%>"><%= player.lastName %>, <%= player.firstName %></a></h2>
+
+  <%});%>
+</div>
+<% } %>

@@ -1,4 +1,4 @@
-var Router = Backbone.Router.extend({
+var PlayerRouter = Backbone.Router.extend({
   initialize: function(options){
     this.collection = options.collection;
     this.model = options.model;
@@ -6,7 +6,7 @@ var Router = Backbone.Router.extend({
   },
   routes:{
     'players(?*:queryString)' : 'listPlayers',
-    'players/:id' : 'showPlayer'
+    'players/:id'             : 'showPlayer'
   },
   setView: function(view) {
     if(this.view){

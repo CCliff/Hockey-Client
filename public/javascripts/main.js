@@ -107,10 +107,17 @@ function setGraph(player){
 $(function(){
     var playerCollection = new PlayerCollection();
     var playerModel = new Player();
-    var router;
-    router = new Router({
+    var playerRouter;
+    playerRouter = new PlayerRouter({
         collection: playerCollection,
         model: playerModel,
+        $el: $('.content')
+    });
+
+    var searchCollection = new SearchCollection();
+    var searchRouter;
+    searchRouter = new SearchRouter({
+        collection: searchCollection,
         $el: $('.content')
     });
 
