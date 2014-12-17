@@ -10,13 +10,70 @@ body {
   background-size: cover;
 }
 
+nav {
+    background: rgb(66, 56, 55);
+    border-bottom: 2px solid black;
+    box-shadow: 0px 0px 40px black;
+    height: 44px;
+}
+
+.nav-search {
+    float: right;
+    margin: 9px;
+    width: 400px;
+}
+
+.nav-search div {
+    float: left;
+}
+
+.nav-search select#year {
+    margin: 0px 21px;
+    height: 25px;
+}
+
+.nav-search .search-button {
+    display: inline;
+    width: 80px;
+}
+
 .content {
   background-color: #eee;
   max-width: 800px;
   margin: auto;
   box-shadow: 0px 0px 41px black;
   padding-bottom: 10px;
-  min-height: 100%;
+  min-height: calc(100% - 56px);
+}
+
+.search-container {
+    width: 500px;
+    height: 400px;
+    background: black;
+    opacity: .5;
+    border-radius: 10px;
+    position: absolute;
+    top: 190px;
+    left: 365px;
+}
+
+.search-text {
+    width: 410px;
+    margin: 140px auto 20px;
+}
+
+.search-year {
+    width: 410px;
+    margin: 0 auto 20px;
+}
+
+.search-year select#year {
+  margin-left: 37px;
+}
+
+.search-button {
+    width: 410px;
+    margin: auto;
 }
 
 .player-display {
@@ -52,6 +109,21 @@ span.position {
   box-shadow: 0px 0px 6px #555;
 }
 
+.player-general {
+    width: 60%;
+    float: left;
+}
+
+.player-detailed {
+    float: right;
+    margin-right: 20px;
+    margin-top: 6px;
+}
+
+.player-detailed p {
+    margin: 5px 0px;
+}
+
 path {
   opacity: 0.5;
   stroke-linecap: round;
@@ -71,7 +143,7 @@ table.seasons {
 }
 
 .cells-highlighted{
-  background-color: yellow;
+  background-color: #CCC;
 }
 
 #season-header td {
@@ -90,6 +162,7 @@ table.seasons {
   border: 1px solid #666;
   margin-left: 5px;
   margin-right: 5px;
+  border-radius: 3px;
 }
 
 
@@ -106,4 +179,39 @@ td{
   padding: 4px;
   border-right: 1px solid #C1DAD7;
   border-bottom: 1px solid #C1DAD7;
+}
+
+.stat-expand button {
+    color: white;
+    font-weight: bold;
+    background: rgb(63, 63, 130);
+    border: 2px solid rgb(156, 59, 59);
+    border-radius: 9px;
+    width: 20px;
+    height: 20px;
+    padding: 0px 4px;
+}
+
+.season-parts{
+  display: none;
+  border-top: 2px solid #666;
+  border-bottom: 2px solid #666;
+}
+
+.season-parts tr:nth-child(odd) {
+background-color: #D5E1E1;
+}
+
+.season-parts tr:nth-child(even) {
+background-color: #CCC;
+}
+
+.cf:before,
+.cf:after {
+    content: "" ;
+    display: table;
+}
+
+.cf:after {
+    clear: both;
 }

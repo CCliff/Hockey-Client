@@ -1,6 +1,12 @@
-<div class="player-display">
+<div class="player-display cf">
+  <div class="player-general">
     <h1><%=player.lastName%>, <%=player.firstName%> <span class='position'><%=player.pos%></span></h1>
-    
+  </div>
+  <div class="player-detailed">
+    <p>Height: <%=player.height%></p>
+    <p>Weight: <%=player.weight%></p>
+    <p>Birth Year: <%=player.birthYear%></p>
+  </div>
 </div>
 
 <svg id="stats-graph" width="800" height="500"></svg>
@@ -31,13 +37,19 @@
 
     <tr id="season-<%=season.year%>">
       <td class="stat-expand">
-        <% if (season.seasons) {%>
-          <a href="#">+</a>
+        <% if (season.parts) {%>
+          <button>+</button>
         <%};%>
       </td>
       <td class="stat-lg"><%=season.lgID%></td>
       <td class="stat-year"><%=season.year%></td>
-      <td class="stat-team"><a href="/#players?team=<%=season.tmID%>&year=<%=season.year%>"><%=season.tmID%></a></td>
+      <td class="stat-team">
+        <% if(season.tmID !== 'VAR') {%>
+          <a href="/#players?team=<%=season.tmID%>&year=<%=season.year%>"><%=season.tmID%></a>
+        <% } else { %>
+          <%=season.tmID%>
+        <% } %>
+      </td>
       <td class="stat-pos"><%=season.pos%></td>
       <td class="stat-GP"><%=season.GP%></td>
       <td class="stat-G"><%=season.G%></td>
@@ -52,6 +64,31 @@
       <td class="stat-PIM"><%=season.PIM%></td>
 
     </tr>
+
+    <% if (season.parts) {%>
+      <tbody id="parts-<%=season.year%>" class="season-parts">
+      <% _.each(season.parts, function(season, id) { %>
+        <tr>
+          <td class="stat-expand"></td>
+          <td class="stat-lg"><%=season.lgID%></td>
+          <td class="stat-year"><%=season.year%></td>
+          <td class="stat-team"><a href="/#players?team=<%=season.tmID%>&year=<%=season.year%>"><%=season.tmID%></a></td>
+          <td class="stat-pos"><%=season.pos%></td>
+          <td class="stat-GP"><%=season.GP%></td>
+          <td class="stat-G"><%=season.G%></td>
+          <td class="stat-A"><%=season.A%></td>
+          <td class="stat-PPA"><%=season.PPA%></td>
+          <td class="stat-PPG"><%=season.PPG%></td>
+          <td class="stat-Pts"><%=season.Pts%></td>
+          <td class="stat-PlusMinus"><%=season.PlusMinus%></td>
+          <td class="stat-SOG"><%=season.SOG%></td>
+          <td class="stat-GWG"><%=season.GWG%></td>
+          <td class="stat-GTG"><%=season.GTG%></td>
+          <td class="stat-PIM"><%=season.PIM%></td>
+        </tr>
+      <% }) %>
+      </tbody>
+    <%};%>
 
   <%});%>
   </tbody>
@@ -69,6 +106,14 @@
   $(document).on('mouseenter mouseleave', 'path', function(){
     var stat = $(this).attr('class');
     $('.stat-' + stat).toggleClass("cells-highlighted");
+  });
+  $(document).on('click', '.stat-expand button', function(){
+    $(this).parents('tbody').next('.season-parts').toggle();
+    if ($(this).text() === '+'){
+      $(this).text('-');
+    } else{
+      $(this).text('+');
+    }
   });
 
   setTimeout(function(){
