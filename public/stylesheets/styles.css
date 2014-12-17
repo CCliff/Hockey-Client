@@ -48,18 +48,19 @@ nav {
 
 .search-container {
     width: 500px;
-    height: 400px;
+    /* height: 400px; */
     background: black;
     opacity: .5;
     border-radius: 10px;
-    position: absolute;
+    position: relative;
     top: 190px;
-    left: 365px;
+    left: 150px;
+    padding: 36px 0;
 }
 
 .search-text {
     width: 410px;
-    margin: 140px auto 20px;
+    margin: 20px auto 20px;
 }
 
 .search-year {
