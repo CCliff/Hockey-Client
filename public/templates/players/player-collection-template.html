@@ -1,6 +1,8 @@
   <% _.each(collection, function(player, index){%>
-    <div class="info player">
-      <a href="#players/<%=player.playerID%>"><div class="player-name"><%=player.lastName%>, <%=player.firstName%></div></a>
-      <div class="player-position"><%=player.pos%></div>
-    </div>
+    <a href="#players/<%=player.playerID%>">
+      <div class="info player">
+        <div class="player-name"><%=player.lastName%>, <%=player.firstName%></div>
+        <div class="player-position"><%=player.pos%></div>
+      </div>
+    </a>
   <%});%>

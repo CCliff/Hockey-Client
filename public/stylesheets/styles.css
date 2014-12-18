@@ -10,6 +10,15 @@ body {
   background-size: cover;
 }
 
+h1 {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: #333
+}
+
 nav {
     background: rgb(66, 56, 55);
     border-bottom: 2px solid black;
@@ -19,8 +28,8 @@ nav {
 
 .nav-search {
     float: right;
-    margin: 9px;
-    width: 400px;
+    margin: 7px;
+    width: 411px;
 }
 
 .nav-search div {
@@ -29,7 +38,6 @@ nav {
 
 .nav-search select#year {
     margin: 0px 21px;
-    height: 25px;
 }
 
 .nav-search .search-button {
@@ -48,18 +56,24 @@ nav {
 
 .search-container {
     width: 500px;
-    /* height: 400px; */
-    background: black;
-    opacity: .5;
+    background: rgb(60, 51, 50);
+    /* opacity: .5; */
     border-radius: 10px;
     position: relative;
     top: 190px;
     left: 150px;
     padding: 36px 0;
+    color: white;
+    box-shadow: 0px 0px 8px black;
+}
+
+.search-container h1 {
+    text-align: center;
+    margin-top: 0;
 }
 
 .search-text {
-    width: 410px;
+    width: 414px;
     margin: 20px auto 20px;
 }
 
@@ -69,12 +83,51 @@ nav {
 }
 
 .search-year select#year {
-  margin-left: 37px;
+  margin-left: 34px;
+}
+
+input {
+    color: #333;
+    background: white; 
+    border: 2px solid #333;
+    padding: 4px;
+    border-radius: 5px;
+    transition: background .5s, border .5s;
+}
+
+input:focus {
+border: 2px solid rgb(183, 183, 216);
+background: rgb(227, 227, 245);
+}
+
+select {
+    color: #333;
+    background: white;
+    border: 2px solid #333;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+select:focus {
+  border: 2px solid rgb(183, 183, 216);
+  background: rgb(227, 227, 245);
 }
 
 .search-button {
     width: 410px;
     margin: auto;
+    background: #C2D5EB;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    box-shadow: 0px 0px 2px black;
+    height: 30px;
+    transition: background .5s;
+}
+
+.search-button:hover {
+    background: #80A1C7;
 }
 
 .info {
@@ -83,6 +136,14 @@ nav {
     background: rgb(224, 214, 204);
     border: 2px solid rgb(102, 93, 88);
     border-radius: 10px;
+}
+
+.info.player {
+  transition: background .5s;
+}
+
+.info.player:hover {
+    background: rgb(177, 159, 142);
 }
 
 .info h1 {
@@ -97,6 +158,18 @@ nav {
 .info h2 {
     border-bottom: 1px solid rgb(81, 71, 69);
     padding: 10px;
+}
+
+span.triangle {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  transition: transform .5s;
+}
+
+span{
+  transition: background .5s;
 }
 
 .player-display {

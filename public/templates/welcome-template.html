@@ -1,7 +1,8 @@
 <div class="search-container">
+    <h1>Search Here!</h1>
     <div class="search-text">
       <label for="search">Search for Players or Teams</label>
-      <input id ="search" type="text" name='search'>
+      <input class="search" type="text" name='search'>
     </div>
     <div class="search-year">   
       <label for="year">Select a Year <span>(optional)</span></label>
@@ -117,9 +118,5 @@
 </div>
 
 <script>
-  $('.search-button').on('click', function(){
-    var search_term = $(this).parent().parent().children().find('input').val();
-    var year = $(this).parent().parent().children().find('select').val();
-        window.location =  "/#search?search=" + search_term + "&year=" + year;
-    });
+
 </script>

@@ -3,8 +3,8 @@
     <h1><%=player.lastName%>, <%=player.firstName%> <span class='position'><%=player.pos%></span></h1>
   </div>
   <div class="player-detailed">
-    <p>Height: <%=player.height%></p>
-    <p>Weight: <%=player.weight%></p>
+    <p>Height: <%=Math.floor(player.height/12)%>&#39;<%=player.height%12%></p>
+    <p>Weight: <%=player.weight%> lbs</p>
     <p>Birth Year: <%=player.birthYear%></p>
   </div>
 </div>

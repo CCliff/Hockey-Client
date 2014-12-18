@@ -105,23 +105,28 @@ function setGraph(player){
 }
 
 $(function(){
-    var playerCollection = new PlayerCollection();
-    var playerModel = new Player();
-    var playerRouter;
-    playerRouter = new PlayerRouter({
-        collection: playerCollection,
-        model: playerModel,
-        $el: $('.content')
-    });
+  // set up Backbone routers dependencies
+  var playerCollection = new PlayerCollection();
+  var playerModel = new Player();
+  var playerRouter;
+  playerRouter = new PlayerRouter({
+      collection: playerCollection,
+      model: playerModel,
+      $el: $('.content')
+  });
 
-    var searchCollection = new SearchCollection();
-    var searchRouter;
-    searchRouter = new SearchRouter({
-        collection: searchCollection,
-        $el: $('.content')
-    });
+  var searchCollection = new SearchCollection();
+  var searchRouter;
+  searchRouter = new SearchRouter({
+      collection: searchCollection,
+      $el: $('.content')
+  });
 
-    Backbone.history.start();
+  // Start Backbone history for routing capabilities
+
+  Backbone.history.start();
+
+  // click event on the header of the player table to toggle the lines in the graph
 
   $(document).on('click', '#season-header td', function(){
     var stat = $(this).text();
@@ -131,10 +136,16 @@ $(function(){
     $('.' + stat).toggle();
     renderBoxes();
   });
+
+  // hover event to highlight the path and the column of a hovered over path in the player graph
+
   $(document).on('mouseenter mouseleave', 'path', function(){
     var stat = $(this).attr('class');
     $('.stat-' + stat).toggleClass("cells-highlighted");
   });
+
+  // click event to expand seasons for a player that is traded mid-season
+
   $(document).on('click', '.stat-expand button', function(){
     $(this).parents('tbody').next('.season-parts').toggle();
     if ($(this).text() === '+'){
@@ -142,6 +153,29 @@ $(function(){
     } else{
       $(this).text('+');
     }
+  });
+
+  // expand and contract Players and Teams on the search results page 
+
+  $(document).on('click', '.info h1', function(){
+    $(this).siblings('h2').slideToggle(function(){
+      if($(this).css('border-radius') === '9px'){        
+        $(this).removeAttr('style');
+      }else{
+        $(this).css('border-radius', '9px');
+      }
+    }.bind(this));
+    if($(this).children('.triangle').attr('style') === 'transform: rotate(90deg);'){
+      $(this).children('.triangle').removeAttr('style');
+    }else{
+      $(this).children('.triangle').css('transform', 'rotate(90deg)');
+    }
+  });
+
+  $(document).on('click', '.search-button', function(){
+    var search_term = $(this).parent().parent().children().find('input').val();
+    var year = $(this).parent().parent().children().find('select').val();
+      window.location =  "/#search?search=" + search_term + "&year=" + year;
   });
 
 });
