@@ -95,27 +95,6 @@
 </table>
 
 <script>
-  $(document).on('click', '#season-header td', function(){
-    var stat = $(this).text();
-    if (stat === '+/-'){
-      stat = 'PlusMinus';
-    }
-    $('.' + stat).toggle();
-    renderBoxes();
-  });
-  $(document).on('mouseenter mouseleave', 'path', function(){
-    var stat = $(this).attr('class');
-    $('.stat-' + stat).toggleClass("cells-highlighted");
-  });
-  $(document).on('click', '.stat-expand button', function(){
-    $(this).parents('tbody').next('.season-parts').toggle();
-    if ($(this).text() === '+'){
-      $(this).text('-');
-    } else{
-      $(this).text('+');
-    }
-  });
-
   setTimeout(function(){
     $paths = $('path');
     $paths.each(function(index, path){

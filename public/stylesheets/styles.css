@@ -42,7 +42,7 @@ nav {
   max-width: 800px;
   margin: auto;
   box-shadow: 0px 0px 41px black;
-  padding-bottom: 10px;
+  padding: 10px;
   min-height: calc(100% - 56px);
 }
 
@@ -77,6 +77,28 @@ nav {
     margin: auto;
 }
 
+.info {
+    margin: 20px;
+    padding: 10px;
+    background: rgb(224, 214, 204);
+    border: 2px solid rgb(102, 93, 88);
+    border-radius: 10px;
+}
+
+.info h1 {
+    margin: -12px;
+    padding: 10px;
+    background: rgb(81, 71, 69);
+    border: 2px solid black;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+}
+
+.info h2 {
+    border-bottom: 1px solid rgb(81, 71, 69);
+    padding: 10px;
+}
+
 .player-display {
   background: rgb(245, 238, 232);
   background: #c1beb4; /* Old browsers */
@@ -89,6 +111,7 @@ nav {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c1beb4', endColorstr='#f5eee8',GradientType=1 ); /* IE6-9 */
   border-bottom: 5px solid rgb(100, 90, 88);
   border-top: 5px solid rgb(100, 90, 88);
+  margin: -10px;
 }
 
 .player-display h1 {

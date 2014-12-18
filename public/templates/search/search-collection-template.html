@@ -1,5 +1,5 @@
 <% if (collection[0].teams.length !== 0){ %>
-<div class="teams">
+<div class="info teams">
   <h1>Teams</h1>
   <% _.each(collection[0].teams, function(team, index){%>
 
@@ -10,7 +10,7 @@
 <% } %>
 
 <% if (collection[0].players.length !== 0){ %>
-<div class="players">
+<div class="info players">
   <h1>Players</h1>
   <% _.each(collection[0].players, function(player, index){%>
 
@@ -19,3 +19,16 @@
   <%});%>
 </div>
 <% } %>
+
+<script>
+  $(document).on('click', '.info h1', function(){
+    $(this).siblings('h2').slideToggle(function(){
+      if($(this).css('border-radius') === '9px'){        
+        $(this).removeAttr('style');
+      }else{
+        $(this).css('border-radius', '9px');
+      }
+    }.bind(this));
+    
+  });
+</script>
